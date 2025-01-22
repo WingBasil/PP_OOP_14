@@ -19,9 +19,13 @@ class Category:
         Category.product_count += len(products)
         print(Category.product_count)
 
-    def add_product(self, product: Product) -> Any:
-        self.__products.append(product)
-        Category.product_count += 1
+    def add_product(self, product: dict):
+        """Метод добавления нового продукта в список"""
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     @property
     def get_product_list(self) -> str:
